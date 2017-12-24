@@ -1,0 +1,30 @@
+{
+  "name": "telefonic-list",
+  "version": "0.0.1",
+  "description": "Easy way to control our contacts",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samuelsilvadev/telefonic-list.git"
+  },
+  "keywords": [
+    "telefonic",
+    "list",
+    "angularjs",
+    "javascript",
+    "HTML5",
+    "CSS3"
+  ],
+  "author": "Samuel Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samuelsilvadev/telefonic-list/issues"
+  },
+  "homepage": "https://github.com/samuelsilvadev/telefonic-list#readme"
+}
