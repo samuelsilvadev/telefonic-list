@@ -1,0 +1,9 @@
+.jumbotron {
+    width: 600px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.selecionado {
+    background-color: yellowgreen;
+}
