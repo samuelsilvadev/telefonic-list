@@ -1,22 +1,17 @@
-angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function($scope, $http) {
+angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function($scope, contactsAPI, operatorsAPI) {
     
     $scope.titleApp = "Lista Telefonica";
     $scope.contatos = [];
-    $scope.operadoras = [];
-    
-    const endPoints = {
-        contatos: 'http://127.0.0.1:3412/contatos',
-        operadoras : 'http://127.0.0.1:3412/operadoras'
-    };
+    $scope.operadoras = [];    
 
     const carregarContatos = (function() {
-        $http.get(endPoints.contatos)
+        contactsAPI.getContacts()
             .then(response => $scope.contatos = response.data)
             .catch(err => log(err));
     })();
 
     const carregarOperadoras = (function() {
-        $http.get(endPoints.operadoras)
+        operatorsAPI.getOperators()
             .then(response => $scope.operadoras = response.data)
             .catch(err => log(err));
     })();
@@ -24,7 +19,7 @@ angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function($sc
     $scope.adicionarContato = function(contato) {
         contato.selecionado = false;
         contato.data = new Date();				
-        $http.post(endPoints.contatos, contato)
+        contactsAPI.saveContact(contato)
             .then(response => {
                 $scope.contatos.push(contato);
                 delete $scope.contato;
@@ -40,7 +35,5 @@ angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function($sc
     $scope.isContatoSelecionado = function(contatos) {
         log(contatos);
         return contatos.some(contato => contato.selecionado);
-    }
-
-    
+    }    
 });
