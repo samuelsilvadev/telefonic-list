@@ -8,6 +8,7 @@
   },
   "scripts": {
 	"start": "http-server -p 8787",
+	"lint": "./node_modules/.bin/eslint js/",
     "test": "npm test"
   },
   "repository": {
@@ -27,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/samuelsilvadev/telefonic-list/issues"
   },
-  "homepage": "https://github.com/samuelsilvadev/telefonic-list#readme"
+  "homepage": "https://github.com/samuelsilvadev/telefonic-list#readme",
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "eslint-config-google": "^0.9.1"
+  }
 }
