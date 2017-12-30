@@ -1,15 +1,14 @@
 angular
-    .module('listaTelefonica')
-    .service('operatorsAPI', function($http, config) {
-    
-    const _endPoints = {
-        operators: config.baseUrl + '/operadoras'
-    };
+	.module('listaTelefonica')
+	.service('operatorsAPI', function($http, config) {
+		const _endPoints = {
+			operators: config.baseUrl + '/operadoras',
+		};
 
-    this.getOperators = function() {
-        return $http.get(_endPoints.operators);
-    }
-});
+		this.getOperators = function() {
+			return $http.get(_endPoints.operators);
+		};
+	});
 
 // Using IIFE
 // (function(){
@@ -23,7 +22,7 @@ angular
 
 //         this.getOperators() = function() {
 //             return $http.getOperators();
-//         }        
+//         }
 //     }
 
 // }());
