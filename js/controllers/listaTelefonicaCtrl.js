@@ -3,7 +3,8 @@ angular
 	.controller('listaTelefonicaCtrl', function(
 		$scope,
 		contactsAPI,
-		operatorsAPI) {
+		operatorsAPI,
+		serialGenerator) {
 		$scope.titleApp = 'Lista Telefonica';
 		$scope.contatos = [];
 		$scope.operadoras = [];

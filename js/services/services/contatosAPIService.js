@@ -3,17 +3,16 @@
 
 	angular
 		.module('listaTelefonica')
-		.service('contactsAPI', ServiceContacts)
+		.service('contactsAPI', ServiceContacts);
 
 	/**
-	 * Add two numbers.
+	 * Service to CRUD contacts.
 	 * @param {http} $http
 	 * @param {config} config geral configs app
 	 */
 	function ServiceContacts($http, config) {
-
 		const _endPoints = {
-			contatcs: config.baseUrl + '/contatos'
+			contatcs: config.baseUrl + '/contatos',
 		};
 
 		this.getContacts = function() {
