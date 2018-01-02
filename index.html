@@ -15,6 +15,7 @@
 	<script src="./js/services/services/operadorasAPIService.js"></script>
 	<script src="./js/services/providers/serialGeneratorProvider.js"></script>
 	<script src="./js/controllers/listaTelefonicaCtrl.js"></script>
+	<script src="./js/filters/firstsLettersUpercaseFilter.js"></script>
 </head>
 <body>
 	<div ng-controller="listaTelefonicaCtrl as listaTelefonica">
@@ -36,7 +37,7 @@
 					ng-repeat="contato in listaTelefonica.contatos | filter : criterioDebusca | orderBy: 'nome'">
 
 					<td><input type="checkbox" ng-model="contato.selecionado"></td>
-					<td>{{ contato.nome }}</td>
+					<td>{{ contato.nome | firstslettersupercase}}</td>
 					<td>{{ contato.telefone }}</td>
 					<td>{{ contato.operadora.nome }}</td>
 					<td>{{ contato.data | date : 'dd/MM/yyyy HH:mm' }}</td>
