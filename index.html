@@ -38,7 +38,7 @@
 					ng-repeat="contato in listaTelefonica.contatos | filter : criterioDebusca | orderBy: 'nome'">
 
 					<td><input type="checkbox" ng-model="contato.selecionado"></td>
-					<td>{{ contato.nome | firstslettersupercase}}</td>
+					<td>{{ contato.nome | firstslettersupercase | ellipsis}}</td>
 					<td>{{ contato.telefone }}</td>
 					<td>{{ contato.operadora.nome }}</td>
 					<td>{{ contato.data | date : 'dd/MM/yyyy HH:mm' }}</td>
