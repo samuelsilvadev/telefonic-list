@@ -22,7 +22,9 @@
 	<div ng-controller="listaTelefonicaCtrl as listaTelefonica">
 		<div class="jumbotron">
 			<h4>{{ listaTelefonica.titleApp }}</h4>
-
+			<div ng-if="listaTelefonica.error" class="alert alert-danger" role="alert">
+				{{ listaTelefonica.error }}
+			</div>
 			<!-- {{ contatos }} -->
 			<input type="text" class="form-control" placeholder="Digite alguma coisa" ng-model="criterioDebusca">
 			<table ng-show="listaTelefonica.contatos.length > 0" class="table">

@@ -10,6 +10,7 @@ angular
 		listaTelefonica.titleApp = 'Lista Telefonica';
 		listaTelefonica.contatos = [];
 		listaTelefonica.operadoras = [];
+		listaTelefonica.error = '';
 
 		/**
 		 * carregar Contatos
@@ -18,7 +19,10 @@ angular
 		(function init() {
 			contactsAPI.getContacts()
 				.then((response) => listaTelefonica.contatos = response.data)
-				.catch((err) => log(err));
+				.catch((err) => {
+					log(err);
+					listaTelefonica._setError('Não foi possível carregar os contatos');
+				});
 
 			operatorsAPI.getOperators()
 				.then((response) => listaTelefonica.operadoras = response.data)
@@ -45,5 +49,9 @@ angular
 		listaTelefonica.isContatoSelecionado = function(contatos) {
 			log(contatos);
 			return contatos.some((contato) => contato.selecionado);
+		};
+
+		listaTelefonica._setError = function(err) {
+			listaTelefonica.error = err;
 		};
 	});
