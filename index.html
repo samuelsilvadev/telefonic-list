@@ -17,14 +17,16 @@
 	<script src="./js/controllers/listaTelefonicaCtrl.js"></script>
 	<script src="./js/filters/firstsLettersUpercaseFilter.js"></script>
 	<script src="./js/filters/ellipsisFilter.js"></script>
+	<script src="./js/directives/uiAlertDirective.js"></script>
 </head>
 <body>
 	<div ng-controller="listaTelefonicaCtrl as listaTelefonica">
+		{{ $id }}
 		<div class="jumbotron">
 			<h4>{{ listaTelefonica.titleApp }}</h4>
-			<div ng-if="listaTelefonica.error" class="alert alert-danger" role="alert">
-				{{ listaTelefonica.error }}
-			</div>
+			
+			<ui-alert error="listaTelefonica.error"></ui-alert>
+
 			<!-- {{ contatos }} -->
 			<input type="text" class="form-control" placeholder="Digite alguma coisa" ng-model="criterioDebusca">
 			<table ng-show="listaTelefonica.contatos.length > 0" class="table">
