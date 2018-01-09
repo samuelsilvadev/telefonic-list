@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br" ng-app="listaTelefonica">
+
 <head>
 	<title>Telefonic List</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/app.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+	
+	<script src="./node_modules/angular/angular.min.js"></script>
 	<script src="./lib/angularjs/locales/angular.locale-pt-br.js"></script>
 	<script src="./js/app.js"></script>
-	<!-- <script src="./js/services/factorys/contatosAPIFactory.js"></script> -->
-	<!-- <script src="./js/services/factorys/operadorasAPIFactory.js"></script>	 -->
 	<script src="./js/services/values/config.value.js"></script>
 	<script src="./js/services/services/contatosAPIService.js"></script>
 	<script src="./js/services/services/operadorasAPIService.js"></script>
@@ -19,51 +21,41 @@
 	<script src="./js/filters/ellipsisFilter.js"></script>
 	<script src="./js/directives/uiAlertDirective.js"></script>
 </head>
+
 <body>
 	<div ng-controller="listaTelefonicaCtrl as listaTelefonica">
-		{{ $id }}
 		<div class="jumbotron">
 			<h4>{{ listaTelefonica.titleApp }}</h4>
-			
+
 			<ui-alert error="listaTelefonica.error"></ui-alert>
 
-			<!-- {{ contatos }} -->
-			<input type="text" class="form-control" placeholder="Digite alguma coisa" ng-model="criterioDebusca">
-			<table ng-show="listaTelefonica.contatos.length > 0" class="table">
-				<tr>
-					<th></th>
-					<th>Nome</th>
-					<th>Telefone</th>
-					<th>Operadora</th>
-					<th>Data</th>
-				</tr>
-				<tr
-					ng-class="{selecionado: listaTelefonica.contato.selecionado}"
-					ng-repeat="contato in listaTelefonica.contatos | filter : criterioDebusca | orderBy: 'nome'">
+			<div ng-show="listaTelefonica.contatos.length > 0">
+				<input type="text" class="form-control" placeholder="Digite alguma coisa" ng-model="criterioDebusca">
+				<table class="table">
+					<tr>
+						<th></th>
+						<th>Nome</th>
+						<th>Telefone</th>
+						<th>Operadora</th>
+						<th>Data</th>
+					</tr>
+					<tr ng-class="{selecionado: listaTelefonica.contato.selecionado}" ng-repeat="contato in listaTelefonica.contatos | filter : criterioDebusca | orderBy: 'nome'">
 
-					<td><input type="checkbox" ng-model="contato.selecionado"></td>
-					<td>{{ contato.nome | firstslettersupercase | ellipsis}}</td>
-					<td>{{ contato.telefone }}</td>
-					<td>{{ contato.operadora.nome }}</td>
-					<td>{{ contato.data | date : 'dd/MM/yyyy HH:mm' }}</td>
-				</tr>
-			</table>
+						<td>
+							<input type="checkbox" ng-model="contato.selecionado">
+						</td>
+						<td>{{ contato.nome | firstslettersupercase | ellipsis}}</td>
+						<td>{{ contato.telefone }}</td>
+						<td>{{ contato.operadora.nome }}</td>
+						<td>{{ contato.data | date : 'dd/MM/yyyy HH:mm' }}</td>
+					</tr>
+				</table>
+			</div>
 			<form name="listaTelefonica.contatoForm">
 				<div class="form-group">
-					<input
-						class="form-control"
-						type="text"
-						placeholder="Nome"
-						name="nome"
-						ng-model="listaTelefonica.contato.nome"
-						ng-required="true">
-					<input
-						class="form-control"
-						type="text"
-						placeholder="Telefone"
-						name="telefone"
-						ng-model="listaTelefonica.contato.telefone"
-						ng-required="true">
+					<input class="form-control" type="text" placeholder="Nome" name="nome" ng-model="listaTelefonica.contato.nome" ng-required="true">
+					<input class="form-control" type="text" placeholder="Telefone" name="telefone" ng-model="listaTelefonica.contato.telefone"
+					 ng-required="true">
 					<!-- <select
 						class="form-control"
 						ng-model="contato.operadora"
@@ -76,29 +68,21 @@
 						ng-options="operadora.codigo as operadora.nome for operadora in operadoras">
 						<option value="">Selecione um operadora</option>
 					</select> -->
-					<select
-						class="form-control"
-						ng-model="listaTelefonica.contato.operadora"
-						ng-options="operadora.nome  + [  (operadora.preco | currency) ]  group by operadora.categoria for operadora in listaTelefonica.operadoras | orderBy : 'nome'">
+					<select class="form-control" ng-model="listaTelefonica.contato.operadora" ng-options="operadora.nome  + [  (operadora.preco | currency) ]  group by operadora.categoria for operadora in listaTelefonica.operadoras | orderBy : 'nome'">
 						<option value="">Selecione um operadora</option>
 					</select>
 				</div>
 				<div class="row">
 					<div class="col">
-						<button
-							class="btn btn-primary btn-block"
-							ng-click="listaTelefonica.adicionarContato(listaTelefonica.contato)"
-							ng-disabled="listaTelefonica.contatoForm.$invalid">Adicionar Contato</button>
+						<button class="btn btn-primary btn-block" ng-click="listaTelefonica.adicionarContato(listaTelefonica.contato)" ng-disabled="listaTelefonica.contatoForm.$invalid">Adicionar Contato</button>
 					</div>
 					<div class="col">
-						<button
-							class="btn btn-danger btn-block"
-							ng-click="listaTelefonica.removerContatos(listaTelefonica.contatos)"
-							ng-disabled="!listaTelefonica.isContatoSelecionado(listaTelefonica.contatos)">Apagar Contato</button>
+						<button class="btn btn-danger btn-block" ng-click="listaTelefonica.removerContatos(listaTelefonica.contatos)" ng-disabled="!listaTelefonica.isContatoSelecionado(listaTelefonica.contatos)">Apagar Contato</button>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 </body>
+
 </html>

@@ -8,8 +8,7 @@ angular
 					if (partName.length < 2) return partName;
 					return partName.charAt(0).toUpperCase()
 						+ partName.substring(1).toLowerCase();
-				}
-				);
+				});
 			return listPartsNameFormatted.join(' ');
 		};
 	});
