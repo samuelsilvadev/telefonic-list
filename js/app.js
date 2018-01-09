@@ -2,4 +2,4 @@ window.log = function(msg) {
 	console.log(msg);
 };
 
-angular.module('listaTelefonica', []);
+angular.module('listaTelefonica', ['serialGenerator']);
