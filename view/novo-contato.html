@@ -1,0 +1,30 @@
+<form name="listaTelefonica.contatoForm">
+    <div class="form-group">
+        <input class="form-control" type="text" placeholder="Nome" name="nome" ng-model="listaTelefonica.contato.nome" ng-required="true">
+        <input class="form-control" type="text" placeholder="Telefone" name="telefone" ng-model="listaTelefonica.contato.telefone"
+            ng-required="true">
+        <!-- <select
+                class="form-control"
+                ng-model="contato.operadora"
+                ng-options="operadora.nome for operadora in operadoras">
+                <option value="">Selecione um operadora</option>
+            </select> -->
+        <!-- <select
+                class="form-control"
+                ng-model="contato.operadora"
+                ng-options="operadora.codigo as operadora.nome for operadora in operadoras">
+                <option value="">Selecione um operadora</option>
+            </select> -->
+        <select class="form-control" ng-model="listaTelefonica.contato.operadora" ng-options="operadora.nome  + [  (operadora.preco | currency) ]  group by operadora.categoria for operadora in listaTelefonica.operadoras | orderBy : 'nome'">
+            <option value="">Selecione um operadora</option>
+        </select>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary btn-block" ng-click="listaTelefonica.adicionarContato(listaTelefonica.contato)" ng-disabled="listaTelefonica.contatoForm.$invalid">Adicionar Contato</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-danger btn-block" ng-click="listaTelefonica.removerContatos(listaTelefonica.contatos)" ng-disabled="!listaTelefonica.isContatoSelecionado(listaTelefonica.contatos)">Apagar Contato</button>
+        </div>
+    </div>
+</form>

@@ -1,60 +1,27 @@
-<div>
-    <div class="jumbotron">
-        <h4>{{ listaTelefonica.titleApp }}</h4>
+<h4>{{ listaTelefonica.titleApp }}</h4>
 
-        <ui-alert error="listaTelefonica.error"></ui-alert>
+<ui-alert error="listaTelefonica.error"></ui-alert>
 
-        <div ng-show="listaTelefonica.contatos.length > 0">
-            <input type="text" class="form-control" placeholder="Digite alguma coisa" ng-model="criterioDebusca">
-            <table class="table">
-                <tr>
-                    <th></th>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Operadora</th>
-                    <th>Data</th>
-                </tr>
-                <tr ng-class="{selecionado: listaTelefonica.contato.selecionado}" ng-repeat="contato in listaTelefonica.contatos | filter : criterioDebusca | orderBy: 'nome'">
+<div ng-show="listaTelefonica.contatos.length > 0">
+    <input type="text" class="form-control" placeholder="Digite alguma coisa" ng-model="criterioDebusca">
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Operadora</th>
+            <th>Data</th>
+        </tr>
+        <tr ng-class="{selecionado: listaTelefonica.contato.selecionado}" ng-repeat="contato in listaTelefonica.contatos | filter : criterioDebusca | orderBy: 'nome'">
 
-                    <td>
-                        <input type="checkbox" ng-model="contato.selecionado">
-                    </td>
-                    <td>{{ contato.nome | firstslettersupercase | ellipsis}}</td>
-                    <td>{{ contato.telefone }}</td>
-                    <td>{{ contato.operadora.nome }}</td>
-                    <td>{{ contato.data | date : 'dd/MM/yyyy HH:mm' }}</td>
-                </tr>
-            </table>
-        </div>
-        <form name="listaTelefonica.contatoForm">
-            <div class="form-group">
-                <input class="form-control" type="text" placeholder="Nome" name="nome" ng-model="listaTelefonica.contato.nome" ng-required="true">
-                <input class="form-control" type="text" placeholder="Telefone" name="telefone" ng-model="listaTelefonica.contato.telefone"
-                 ng-required="true">
-                <!-- <select
-                    class="form-control"
-                    ng-model="contato.operadora"
-                    ng-options="operadora.nome for operadora in operadoras">
-                    <option value="">Selecione um operadora</option>
-                </select> -->
-                <!-- <select
-                    class="form-control"
-                    ng-model="contato.operadora"
-                    ng-options="operadora.codigo as operadora.nome for operadora in operadoras">
-                    <option value="">Selecione um operadora</option>
-                </select> -->
-                <select class="form-control" ng-model="listaTelefonica.contato.operadora" ng-options="operadora.nome  + [  (operadora.preco | currency) ]  group by operadora.categoria for operadora in listaTelefonica.operadoras | orderBy : 'nome'">
-                    <option value="">Selecione um operadora</option>
-                </select>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-primary btn-block" ng-click="listaTelefonica.adicionarContato(listaTelefonica.contato)" ng-disabled="listaTelefonica.contatoForm.$invalid">Adicionar Contato</button>
-                </div>
-                <div class="col">
-                    <button class="btn btn-danger btn-block" ng-click="listaTelefonica.removerContatos(listaTelefonica.contatos)" ng-disabled="!listaTelefonica.isContatoSelecionado(listaTelefonica.contatos)">Apagar Contato</button>
-                </div>
-            </div>
-        </form>
-    </div>
+            <td>
+                <input type="checkbox" ng-model="contato.selecionado">
+            </td>
+            <td>{{ contato.nome | firstslettersupercase | ellipsis}}</td>
+            <td>{{ contato.telefone }}</td>
+            <td>{{ contato.operadora.nome }}</td>
+            <td>{{ contato.data | date : 'dd/MM/yyyy HH:mm' }}</td>
+        </tr>
+    </table>
 </div>
+<a class="btn btn-block btn-primary" href="/#!/novo">Novo contato</a>

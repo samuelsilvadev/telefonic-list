@@ -4,8 +4,11 @@ angular
 		$routeProvider.when('/contatos', {
 			templateUrl: 'view/contatos.html',
 			controller: 'listaTelefonicaCtrl as listaTelefonica',
+		}).when('/novo', {
+			templateUrl: 'view/novo-contato.html',
+			controller: 'listaTelefonicaCtrl as listaTelefonica',
 		}).otherwise({
-			redirectTo: '/index.html',
+			redirectTo: '/contatos',
 		});
 	});
 
