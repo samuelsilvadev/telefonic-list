@@ -8,7 +8,7 @@
 
 ## Contacts
 
-> samuelsilvawb@gmail.com
-> @samuelsilvadev
+- samuelsilvawb@gmail.com
+- @samuelsilvadev
 
 
