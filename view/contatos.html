@@ -24,4 +24,11 @@
         </tr>
     </table>
 </div>
-<a class="btn btn-block btn-primary" href="/#!/novo">Novo contato</a>
+<div class="row">
+    <div class="col">
+        <a class="btn btn-block btn-primary" href="/#!/novo">Novo contato</a>
+    </div>
+    <div class="col">
+        <button class="btn btn-danger btn-block" ng-click="listaTelefonica.removerContatos(listaTelefonica.contatos)" ng-disabled="!listaTelefonica.isContatoSelecionado(listaTelefonica.contatos)">Apagar Contato</button>
+    </div>
+</div>

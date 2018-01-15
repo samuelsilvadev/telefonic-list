@@ -6,7 +6,7 @@ angular
 			controller: 'listaTelefonicaCtrl as listaTelefonica',
 		}).when('/novo', {
 			templateUrl: 'view/novo-contato.html',
-			controller: 'listaTelefonicaCtrl as listaTelefonica',
+			controller: 'novoContatoCtrl as novoContato',
 		}).otherwise({
 			redirectTo: '/contatos',
 		});

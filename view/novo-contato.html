@@ -1,7 +1,7 @@
-<form name="listaTelefonica.contatoForm">
+<form name="novoContato.contatoForm">
     <div class="form-group">
-        <input class="form-control" type="text" placeholder="Nome" name="nome" ng-model="listaTelefonica.contato.nome" ng-required="true">
-        <input class="form-control" type="text" placeholder="Telefone" name="telefone" ng-model="listaTelefonica.contato.telefone"
+        <input class="form-control" type="text" placeholder="Nome" name="nome" ng-model="novoContato.contato.nome" ng-required="true">
+        <input class="form-control" type="text" placeholder="Telefone" name="telefone" ng-model="novoContato.contato.telefone"
             ng-required="true">
         <!-- <select
                 class="form-control"
@@ -15,16 +15,16 @@
                 ng-options="operadora.codigo as operadora.nome for operadora in operadoras">
                 <option value="">Selecione um operadora</option>
             </select> -->
-        <select class="form-control" ng-model="listaTelefonica.contato.operadora" ng-options="operadora.nome  + [  (operadora.preco | currency) ]  group by operadora.categoria for operadora in listaTelefonica.operadoras | orderBy : 'nome'">
+        <select class="form-control" ng-model="novoContato.contato.operadora" ng-options="operadora.nome  + [  (operadora.preco | currency) ]  group by operadora.categoria for operadora in novoContato.operadoras | orderBy : 'nome'">
             <option value="">Selecione um operadora</option>
         </select>
     </div>
     <div class="row">
         <div class="col">
-            <button class="btn btn-primary btn-block" ng-click="listaTelefonica.adicionarContato(listaTelefonica.contato)" ng-disabled="listaTelefonica.contatoForm.$invalid">Adicionar Contato</button>
+            <button class="btn btn-primary btn-block" ng-click="novoContato.adicionarContato(novoContato.contato)" ng-disabled="novoContato.contatoForm.$invalid">Adicionar Contato</button>
         </div>
         <div class="col">
-            <button class="btn btn-danger btn-block" ng-click="listaTelefonica.removerContatos(listaTelefonica.contatos)" ng-disabled="!listaTelefonica.isContatoSelecionado(listaTelefonica.contatos)">Apagar Contato</button>
+            <a class="btn btn-block btn-danger" href="/#!/contatos">Voltar</a>
         </div>
     </div>
 </form>
