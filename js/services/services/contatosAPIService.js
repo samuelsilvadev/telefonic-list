@@ -19,6 +19,10 @@
 			return $http.get(_endPoints.contatcs);
 		};
 
+		this.getContact = function(_id) {
+			return $http.get(`${_endPoints.contatcs}/${_id}`);
+		};
+
 		this.saveContact = function(contact) {
 			return $http.post(_endPoints.contatcs, contact);
 		};
